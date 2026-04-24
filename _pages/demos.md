@@ -19,6 +19,9 @@ author_profile: true
     background: #000;
     border: 1px solid #ccc;
   }
+  .demo-frame-wrap.demo-frame-4x3 {
+    padding-top: 75%; /* 4:3 aspect ratio */
+  }
   .demo-frame-wrap iframe {
     position: absolute;
     top: 0; left: 0;
@@ -50,7 +53,7 @@ author_profile: true
   <h2>Dynamic Alert Suppression Policy for Noise Reduction in AIOps</h2>
   <p class="demo-venue"><strong>Bhukar, K.</strong>, Kumar, H., Mahindru, R., Nagar, S., Aggarwal, P., Arora, R., Paradkar, A. — ICSE 2024</p>
 
-  <div class="demo-frame-wrap">
+  <div class="demo-frame-wrap demo-frame-4x3">
     <iframe
       src="https://www.youtube.com/embed/WwNSWfwNMQ8"
       title="Demo: Dynamic Alert Suppression Policy for Noise Reduction in AIOps"
