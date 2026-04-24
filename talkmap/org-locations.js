@@ -5,7 +5,7 @@ var addressPoints = [
     -77.0363849
   ],
   [
-    "IBM Research Industry Expo \u2014 NeurIPS 2022<br />36th Conference on Neural Information Processing Systems (NeurIPS 2022), Ernest N. Morial Convention Center; New Orleans, LA, USA",
+    "IBM Research Industry Expo \u2014 NeurIPS 2023<br />37th Conference on Neural Information Processing Systems (NeurIPS 2023), Ernest N. Morial Convention Center; New Orleans, LA, USA",
     29.9561422,
     -90.0733934
   ],
