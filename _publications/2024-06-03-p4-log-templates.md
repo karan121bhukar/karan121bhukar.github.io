@@ -8,6 +8,13 @@ date: 2024-06-03
 venue: 'U.S. Patent Application, filed 2024 — Application No. US20260030134A1'
 paperurl: 'https://patents.google.com/patent/US20260030134A1/en'
 citation: '<strong>Bhukar, K.</strong>, Gupta, P., Kumar, H., Verma, M. &quot;Systems and Methods for Determining Log Templates of a Computing Device for Log Templatization.&quot; <i>U.S. Patent Application US20260030134A1</i>, filed 2024.'
+bibtex: |
+  @misc{bhukar2024logtemplates,
+    title  = {Systems and Methods for Determining Log Templates of a Computing Device for Log Templatization},
+    author = {Bhukar, Karan and Gupta, Pranjal and Kumar, Harshit and Verma, Manish},
+    year   = {2024},
+    note   = {U.S. Patent Application US20260030134A1}
+  }
 ---
 
 **Status:** U.S. patent application (pending) — Application No. US20260030134A1.

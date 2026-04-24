@@ -8,6 +8,13 @@ date: 2023-06-01
 venue: 'U.S. Patent Application, filed 2023 — Application No. US20250182053A1'
 paperurl: 'https://patentimages.storage.googleapis.com/14/27/99/1155c69ca26993/US20250182053A1.pdf'
 citation: '<strong>Bhukar, K.</strong>, Kumar, H., Azad, A., Joshi, S. &quot;Systems and Methods to Automatically Generate Close Notes from SRE Interactions for Downstream AIOps Tasks.&quot; <i>U.S. Patent Application US20250182053A1</i>, filed 2023.'
+bibtex: |
+  @misc{bhukar2023closenotes,
+    title  = {Systems and Methods to Automatically Generate Close Notes from {SRE} Interactions for Downstream {AIOps} Tasks},
+    author = {Bhukar, Karan and Kumar, Harshit and Azad, Amar and Joshi, Sachindra},
+    year   = {2023},
+    note   = {U.S. Patent Application US20250182053A1}
+  }
 ---
 
 **Status:** U.S. patent application (pending) — Application No. US20250182053A1.

@@ -8,6 +8,13 @@ date: 2026-01-01
 venue: 'U.S. Patent No. US12536061B1 (granted 2026)'
 paperurl: 'https://patents.google.com/patent/US12536061B1/en'
 citation: '<strong>Bhukar, K.</strong>, Kumar, H., Nagar, S., Mahindru, R., Paradkar, A., Manning, I., Hussey, S. &quot;Systems and Methods for Explainability-Driven Control of an Alert Suppression Policy.&quot; <i>U.S. Patent No. US12536061B1</i>, granted 2026.'
+bibtex: |
+  @misc{bhukar2026explainability,
+    title  = {Systems and Methods for Explainability-Driven Control of an Alert Suppression Policy},
+    author = {Bhukar, Karan and Kumar, Harshit and Nagar, Seema and Mahindru, Ruchi and Paradkar, Amit and Manning, Ian and Hussey, Scott},
+    year   = {2026},
+    note   = {U.S. Patent No. US12536061B1, granted 2026}
+  }
 ---
 
 **Status:** Granted — U.S. Patent No. US12536061B1 (2026).

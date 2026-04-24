@@ -1,0 +1,39 @@
+{% include base_path %}
+
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+
+    <h2 class="archive__item-title" itemprop="headline" style="margin-bottom: 0.3em;">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener">{{ title }}</a>
+      {% else %}
+        <a href="{{ base_path }}{{ post.url }}" rel="permalink">{{ title }}</a>
+      {% endif %}
+    </h2>
+
+    {% if post.venue %}
+      <p class="page__meta" style="margin-top: 0;"><em>{{ post.venue }}</em></p>
+    {% endif %}
+
+    <p class="pub-links" style="margin-top: 0.4em;">
+      {% if post.paperurl %}
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener"><i class="fa fa-file-pdf" aria-hidden="true"></i> Paper</a>
+      {% endif %}
+      {% if post.slidesurl %}
+        {% if post.paperurl %} · {% endif %}
+        <a href="{{ post.slidesurl }}" target="_blank" rel="noopener"><i class="fa fa-desktop" aria-hidden="true"></i> Slides</a>
+      {% endif %}
+      {% if post.bibtex %}
+        {% if post.paperurl or post.slidesurl %} · {% endif %}
+        <a href="#" class="bibtex-copy" data-bibtex="{{ post.bibtex | escape }}"><i class="fa fa-copy" aria-hidden="true"></i> <span class="bibtex-label">Copy BibTeX</span></a>
+      {% endif %}
+    </p>
+
+  </article>
+</div>
