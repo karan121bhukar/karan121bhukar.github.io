@@ -1,11 +1,16 @@
 ---
 permalink: /
-title: "About me"
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
 ---
+
+<div class="home-hero">
+  <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
+  <h1 class="home-hero__title">From ML at scale<br>to embodied AI.</h1>
+  <p class="home-hero__sub">Reinforcement learning, robot learning, and test-time scaling — building models that don't just predict, but act.</p>
+</div>
 
 I'm an incoming **MSCS student at [NYU Courant](https://cs.nyu.edu/)** (Fall 2026). I come from several years of building machine learning systems at scale, and I'm now focused on **embodied AI** — bringing modern ML/DL to agents that have to act in the physical world.
 

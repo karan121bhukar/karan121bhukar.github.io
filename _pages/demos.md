@@ -10,14 +10,14 @@ author_profile: true
 <style>
   .demo-section { margin-bottom: 3em; }
   .demo-section h2 { margin-bottom: 0.3em; }
-  .demo-section .demo-venue { margin-top: 0; color: #555; font-style: italic; }
+  .demo-section .demo-venue { margin-top: 0; color: var(--global-text-color); opacity: 0.75; font-style: italic; }
   .demo-player {
     display: block;
     width: 100%;
     max-width: 800px;
     aspect-ratio: 16 / 9;
     margin: 1em 0;
-    border: 1px solid #ccc;
+    border: 1px solid var(--global-border-color);
     background: #000;
   }
   .demo-links { font-size: 0.95em; }

@@ -17,7 +17,7 @@ redirect_from:
        preventing the outer page from competing for wheel events. */
     height: calc(100vh - 120px);
     min-height: 600px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--global-border-color);
     /* Tell the browser this subtree is self-contained for layout/paint,
        which helps with scroll perf. */
     contain: strict;

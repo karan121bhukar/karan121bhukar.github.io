@@ -18,14 +18,6 @@
   font-size: 1.02em;
 }
 
-/* Lead paragraph — gives the home page a light "hero" feel */
-.page__content > p:first-of-type {
-  font-size: 1.28em;
-  line-height: 1.55;
-  font-weight: 400;
-  margin-bottom: 1.4em;
-}
-
 /* ---- Headings: tight, bold, modern grotesk ----------------------------- */
 .page__title,
 .archive__item-title,
@@ -141,3 +133,45 @@
 
 /* ---- Misc polish ------------------------------------------------------- */
 a { transition: color 0.15s ease-in-out; }
+
+/* ---- Home page hero ---------------------------------------------------- */
+.page__content .home-hero {
+  margin: 0.25em 0 2.6em;
+}
+
+.page__content .home-hero__eyebrow {
+  font-family: $header-font-family;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78em;
+  font-weight: 600;
+  color: var(--global-base-color);
+  margin: 0 0 0.7em;
+}
+
+.page__content .home-hero__title {
+  font-family: $header-font-family;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  font-size: 3.1em;
+  line-height: 1.02;
+  margin: 0 0 0.4em;
+}
+
+/* neutralise the generic section-heading accent rule for the hero title */
+.page__content .home-hero__title::after { display: none; }
+
+.page__content .home-hero__sub {
+  font-size: 1.3em;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--global-text-color);
+  opacity: 0.85;
+  margin: 0;
+  max-width: 36ch;
+}
+
+@media (max-width: 600px) {
+  .page__content .home-hero__title { font-size: 2.3em; }
+  .page__content .home-hero__sub { font-size: 1.12em; }
+}
