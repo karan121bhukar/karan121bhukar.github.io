@@ -1,177 +1,224 @@
 /* ==========================================================================
-   CUSTOM REFRESH
-   A modern typographic restyle layered on top of the theme.
-   Imported last in main.scss so these rules win. Colors use the runtime
-   CSS custom properties (--global-*) so they stay correct in light/dark.
+   CUSTOM THEME — "TERMINAL / ROBOTICS"
+   Near-black (#0c0d10) + phosphor-green (#7CFFB2). Space Mono for
+   headings / UI, Space Grotesk for body. Imported last in main.scss so
+   these win. Colors reference the --global-* custom properties.
    ========================================================================== */
+
+/* ---- Faint CAD/terminal grid behind everything ------------------------- */
+body {
+  background-image:
+    linear-gradient(rgba(124, 255, 178, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 255, 178, 0.022) 1px, transparent 1px);
+  background-size: 42px 42px;
+  background-attachment: fixed;
+}
 
 /* ---- Reading rhythm ---------------------------------------------------- */
 .page__content {
   font-size: 1.05em;
   line-height: 1.75;
-  /* a comfortable, intentional measure instead of a very wide column */
   max-width: 52rem;
 }
-
 .page__content p,
-.page__content li {
-  font-size: 1.02em;
-}
+.page__content li { font-size: 1.02em; }
 
-/* ---- Headings: tight, bold, modern grotesk ----------------------------- */
+/* ---- Headings: monospace, with a green comment-style prefix ------------ */
 .page__title,
 .archive__item-title,
 .page__content h1,
 .page__content h2,
 .page__content h3,
 .page__content h4 {
-  font-family: $header-font-family;
-  letter-spacing: -0.022em;
+  font-family: $header-font-family;   /* Space Mono */
   font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .page__title {
-  font-size: 2.7em;
-  line-height: 1.05;
+  font-size: 2.1em;
+  line-height: 1.12;
   margin-bottom: 0.6em;
 }
 
-/* Section headings: drop the dated full-width underline, use a short
-   accent rule instead. Applies to both h1 (=== in markdown) and h2. */
+.page__title::before,
+.page__content h1::before,
+.page__content h2::before {
+  content: "# ";
+  color: var(--global-base-color);
+}
+
 .page__content h1,
 .page__content h2 {
   border-bottom: 0 !important;
   padding-bottom: 0;
   margin-top: 2.2em;
   margin-bottom: 0.7em;
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
 
-.page__content h1::after,
-.page__content h2::after {
-  content: "";
-  display: block;
-  width: 2.4rem;
-  height: 3px;
-  margin-top: 0.5rem;
-  border-radius: 2px;
-  background: var(--global-base-color);
+.page__content h3 { font-size: 1.2em; margin-top: 1.8em; }
+.page__content h3::before {
+  content: "## ";
+  color: var(--global-base-color);
+  opacity: 0.8;
 }
 
-.page__content h3 {
-  font-size: 1.28em;
-  margin-top: 1.8em;
-}
-
-/* ---- Links: clean, animated underline (no heavy default underline) ----- */
+/* ---- Links: phosphor green, animated underline + glow ------------------ */
 .page__content a {
   color: var(--global-link-color);
   text-decoration: none;
   background-image: linear-gradient(var(--global-link-color), var(--global-link-color));
-  background-size: 0% 1.5px;
-  background-position: 0 calc(100% - 1px);
+  background-size: 0% 1px;
+  background-position: 0 100%;
   background-repeat: no-repeat;
-  transition: background-size 0.25s ease;
+  transition: background-size 0.25s ease, color 0.2s ease, text-shadow 0.2s ease;
 }
-
 .page__content a:hover {
-  text-decoration: none;
-  background-size: 100% 1.5px;
+  background-size: 100% 1px;
+  color: var(--global-link-color-hover);
+  text-shadow: 0 0 8px rgba(124, 255, 178, 0.45);
 }
 
 /* ---- Top navigation / masthead ----------------------------------------- */
-.masthead__inner-wrap {
-  padding-top: 0.95em;
-  padding-bottom: 0.95em;
+.masthead {
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
 }
+.masthead__inner-wrap { padding-top: 0.95em; padding-bottom: 0.95em; }
 
 .greedy-nav a,
-.masthead .site-title {
-  font-family: $header-font-family;
-}
+.masthead .site-title { font-family: $header-font-family; }
 
 .greedy-nav a {
-  font-size: 0.95em;
-  font-weight: 500;
-  letter-spacing: 0.005em;
+  font-size: 0.85em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.greedy-nav a:hover {
+  color: var(--global-base-color);
+  text-shadow: 0 0 8px rgba(124, 255, 178, 0.4);
 }
 
 .masthead .site-title {
   font-weight: 700;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.01em;
+}
+.masthead .site-title::before {
+  content: "❯ ";
+  color: var(--global-base-color);
 }
 
 /* ---- Author sidebar ---------------------------------------------------- */
+.sidebar,
+.sidebar p,
+.sidebar li,
+.author__urls li a,
+.author__bio { font-family: $global-font-family; }
+
 .author__avatar img {
-  border-radius: 50%;
+  border-radius: 6px;                 /* squared "ID badge", not a circle */
   aspect-ratio: 1 / 1;
   object-fit: cover;
   max-width: 150px;
-  border: 3px solid var(--global-base-color);
-  padding: 3px;
-  background: var(--global-bg-color);
+  border: 1px solid var(--global-base-color);
+  filter: grayscale(0.45) contrast(1.05);
+  transition: filter 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.author__avatar img:hover {
+  filter: grayscale(0);
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px var(--global-base-color), 0 0 22px rgba(124, 255, 178, 0.28);
 }
 
 .author__name {
   font-family: $header-font-family;
   font-weight: 700;
-  letter-spacing: -0.01em;
 }
 
-.author__bio {
-  line-height: 1.5;
-}
-
-/* ---- Buttons (e.g. CV download) ---------------------------------------- */
+/* ---- Buttons (e.g. CV download): terminal command style ---------------- */
 .btn {
-  border-radius: 999px;
+  border-radius: 4px;
   font-family: $header-font-family;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  padding: 0.55em 1.4em;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.5em 1.1em;
+  background: transparent;
+  color: var(--global-base-color);
+  border: 1px solid var(--global-base-color);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.btn::before { content: "$ "; opacity: 0.8; }
+.btn:hover {
+  background: var(--global-base-color);
+  color: #0c0d10;
+  box-shadow: 0 0 18px rgba(124, 255, 178, 0.35);
 }
 
-/* ---- Misc polish ------------------------------------------------------- */
-a { transition: color 0.15s ease-in-out; }
-
-/* ---- Home page hero ---------------------------------------------------- */
-.page__content .home-hero {
-  margin: 0.25em 0 2.6em;
-}
+/* ---- Home hero --------------------------------------------------------- */
+.page__content .home-hero { margin: 0.25em 0 2.8em; }
 
 .page__content .home-hero__eyebrow {
   font-family: $header-font-family;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.78em;
-  font-weight: 600;
+  font-size: 0.82em;
+  letter-spacing: 0.03em;
+  text-transform: lowercase;
+  color: var(--global-text-color-light);
+  margin: 0 0 1.1em;
+}
+.home-hero__eyebrow .prompt {
   color: var(--global-base-color);
-  margin: 0 0 0.7em;
+  margin-right: 0.45em;
 }
 
 .page__content .home-hero__title {
   font-family: $header-font-family;
   font-weight: 700;
-  letter-spacing: -0.035em;
-  font-size: 3.1em;
-  line-height: 1.02;
-  margin: 0 0 0.4em;
+  letter-spacing: -0.02em;
+  font-size: 2.5em;
+  line-height: 1.12;
+  margin: 0 0 0.55em;
+  color: var(--global-text-color);
+}
+.page__content .home-hero__title::before { content: none; }   /* no # on hero */
+
+.home-hero__cursor {
+  display: inline-block;
+  width: 0.55ch;
+  height: 1em;
+  margin-left: 0.18em;
+  vertical-align: -0.08em;
+  background: var(--global-base-color);
+  box-shadow: 0 0 10px rgba(124, 255, 178, 0.6);
+  animation: term-blink 1.1s steps(1) infinite;
 }
 
-/* neutralise the generic section-heading accent rule for the hero title */
-.page__content .home-hero__title::after { display: none; }
-
 .page__content .home-hero__sub {
-  font-size: 1.3em;
-  line-height: 1.5;
-  font-weight: 400;
+  font-family: $global-font-family;
+  font-size: 1.22em;
+  line-height: 1.55;
   color: var(--global-text-color);
-  opacity: 0.85;
+  opacity: 0.82;
   margin: 0;
-  max-width: 36ch;
+  max-width: 44ch;
+}
+
+@keyframes term-blink {
+  0%, 50%      { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
 }
 
 @media (max-width: 600px) {
-  .page__content .home-hero__title { font-size: 2.3em; }
-  .page__content .home-hero__sub { font-size: 1.12em; }
+  .page__content .home-hero__title { font-size: 1.9em; }
+  .page__content .home-hero__sub { font-size: 1.08em; }
+}
+
+/* ---- Respect reduced-motion preferences -------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__cursor { animation: none; }
+  .page__content a,
+  .btn,
+  .author__avatar img,
+  .greedy-nav a { transition: none; }
 }

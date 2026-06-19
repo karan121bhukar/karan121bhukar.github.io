@@ -16,8 +16,9 @@ author_profile: true
   ul.news-list li:last-child { border-bottom: none; }
   .news-date {
     flex: 0 0 6em;          /* fixed date column */
-    font-weight: 600;
-    color: var(--global-text-color);
+    font-weight: 700;
+    font-family: "Space Mono", monospace;
+    color: var(--global-base-color);
     white-space: nowrap;
   }
   .news-body { flex: 1 1 auto; min-width: 0; }  /* body wraps within its own column */
