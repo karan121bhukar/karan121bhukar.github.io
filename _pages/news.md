@@ -11,13 +11,13 @@ author_profile: true
     display: flex;
     gap: 0.9em;
     padding: 0.7em 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--global-border-color);
   }
   ul.news-list li:last-child { border-bottom: none; }
   .news-date {
     flex: 0 0 6em;          /* fixed date column */
     font-weight: 600;
-    color: #2e2e2e;
+    color: var(--global-text-color);
     white-space: nowrap;
   }
   .news-body { flex: 1 1 auto; min-width: 0; }  /* body wraps within its own column */

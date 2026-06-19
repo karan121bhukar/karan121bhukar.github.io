@@ -29,13 +29,13 @@ News
     display: flex;
     gap: 0.75em;
     padding: 0.5em 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--global-border-color);
   }
   ul.news-list li:last-child { border-bottom: none; }
   .news-date {
     flex: 0 0 5em;
     font-weight: 600;
-    color: #2e2e2e;
+    color: var(--global-text-color);
     white-space: nowrap;
   }
   .news-body { flex: 1 1 auto; min-width: 0; }
