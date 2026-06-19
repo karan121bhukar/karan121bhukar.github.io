@@ -51,11 +51,10 @@
       entries.forEach(function (e) {
         e.target.classList.toggle("is-visible", e.isIntersecting);
       });
-    }, { threshold: 0.06, rootMargin: "0px 0px -30px 0px" });
+    }, { threshold: 0, rootMargin: "0px 0px -10% 0px" });
 
     var vh = window.innerHeight || document.documentElement.clientHeight;
-    targets.forEach(function (el, i) {
-      el.style.transitionDelay = Math.min(i * 40, 220) + "ms";
+    targets.forEach(function (el) {
       // Reveal anything already on screen immediately (no load flash).
       var r = el.getBoundingClientRect();
       if (r.top < vh && r.bottom > 0) el.classList.add("is-visible");
