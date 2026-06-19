@@ -12,7 +12,7 @@ site_theme               : "default" # "default", "air", "sunrise", "mint", "dir
 title                    : "Karan Bhukar"
 title_separator          : "·"
 name                     : &name "Karan Bhukar"
-description              : &description "Applied Scientist at Amazon working on multilingual search query understanding; previously at IBM Research on conversational AI, alert-suppression, and log analytics."
+description              : &description "Incoming MSCS student at NYU Courant working toward embodied AI — robot learning, reinforcement learning, and test-time scaling. Previously ML/DL at scale at Amazon and IBM Research."
 url                      : https://karan121bhukar.github.io
 baseurl                  : ""
 repository               : "karan121bhukar/karan121bhukar.github.io"
@@ -22,9 +22,9 @@ author:
   avatar           : "profile.jpg"
   name             : "Karan Bhukar"
   pronouns         :
-  bio              : "Applied Scientist at Amazon. Previously Research Engineer at IBM Research. Interests: conversational AI, reinforcement learning, multilingual NLP, AIOps / log analytics."
+  bio              : "Incoming MSCS @ NYU Courant. ML/DL at scale → embodied AI: robot learning, RL, test-time scaling. Previously Amazon & IBM Research."
   location         : "Bengaluru, India"
-  employer         : "Amazon"
+  employer         : "NYU Courant (incoming)"
   uri              :
   email            : "choudhary121karan@gmail.com"
 
