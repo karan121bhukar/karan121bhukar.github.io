@@ -193,7 +193,7 @@
 /* ---- Responsive --------------------------------------------------------- */
 @media (min-width: 1101px) {
   /* sit the headline around the arm's working midpoint (purely visual) */
-  .page__content .home-hero { transform: translateY(28px); }
+  .page__content .home-hero { transform: translateY(46px); }
 }
 @media (max-width: 1100px) {
   .page__content .home-top { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
