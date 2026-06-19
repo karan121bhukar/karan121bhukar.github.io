@@ -9,7 +9,7 @@ redirect_from:
 <div class="home-top">
   <div class="home-hero">
     <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
-    <h1 class="home-hero__title">From ML at scale<br>to embodied AI.</h1>
+    <h1 class="home-hero__title">From ML at scale<br>to <span class="rotate" data-words="embodied AI|robot learning|reinforcement learning|test-time scaling">embodied AI</span>.</h1>
     <p class="home-hero__sub">Reinforcement learning, robot learning, and test-time scaling — building models that don't just predict, but act.</p>
   </div>
 

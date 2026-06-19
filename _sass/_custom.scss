@@ -221,3 +221,174 @@
   .robot .r-target { animation: none; }
   .robot animateTransform { display: none; }   /* not standard, but harmless */
 }
+
+/* ==========================================================================
+   INTERACTIVE LAYER (see assets/js/custom.js)
+   ========================================================================== */
+
+/* ---- Scroll reveal ----------------------------------------------------- */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+/* ---- Rotating hero word + caret ---------------------------------------- */
+.home-hero__title .rotate { color: var(--global-base-color); }
+.home-hero__title .rotate::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 0.92em;
+  margin-left: 3px;
+  vertical-align: -0.08em;
+  background: var(--global-base-color);
+  animation: caret-blink 1.05s steps(1) infinite;
+}
+@keyframes caret-blink {
+  0%, 50%      { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+/* ---- Command palette ---------------------------------------------------- */
+.cmdk-fab {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 1.1rem;
+  z-index: 50;
+  font-family: $header-font-family;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--global-text-color);
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-dark-border-color);
+  border-radius: 3px;
+  padding: 0.55em 0.85em;
+  cursor: pointer;
+  box-shadow: 0 3px 14px rgba(0, 0, 0, 0.10);
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.cmdk-fab kbd {
+  font-family: $header-font-family;
+  color: var(--global-base-color);
+  font-weight: 700;
+  border: 1px solid var(--global-border-color);
+  border-radius: 3px;
+  padding: 0 0.35em;
+  margin-left: 0.35em;
+}
+.cmdk-fab:hover { color: var(--global-base-color); border-color: var(--global-base-color); transform: translateY(-1px); }
+
+.cmdk-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(26, 24, 21, 0.38);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+.cmdk-overlay.is-open { display: flex; }
+
+.cmdk-panel {
+  margin-top: 12vh;
+  width: min(540px, 92vw);
+  background: var(--global-bg-color);
+  border: 1px solid var(--global-dark-border-color);
+  border-radius: 7px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+  animation: cmdk-pop 0.16s ease-out;
+}
+@keyframes cmdk-pop {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cmdk-input {
+  width: 100%;
+  box-sizing: border-box;
+  border: 0;
+  border-bottom: 1px solid var(--global-border-color);
+  padding: 1em 1.1em;
+  font-family: $global-font-family;
+  font-size: 1.1em;
+  background: transparent;
+  color: var(--global-text-color);
+  outline: none;
+}
+.cmdk-list { list-style: none; margin: 0; padding: 0.4em; max-height: 50vh; overflow-y: auto; }
+.cmdk-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 0.6em 0.8em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cmdk-item .cmdk-kind {
+  font-family: $header-font-family;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--global-text-color-light);
+}
+.cmdk-item.is-active { background: var(--global-base-color); color: #fff; }
+.cmdk-item.is-active .cmdk-kind { color: rgba(255, 255, 255, 0.82); }
+
+/* ---- RL gridworld (404) ------------------------------------------------- */
+.gridworld {
+  --gw-n: 7;
+  display: grid;
+  grid-template-columns: repeat(var(--gw-n), 1fr);
+  gap: 4px;
+  width: min(320px, 78vw);
+  aspect-ratio: 1 / 1;
+  margin: 1.8em 0;
+}
+.gw-cell {
+  background: var(--global-thead-color);
+  border-radius: 3px;
+  position: relative;
+  transition: background 0.2s ease;
+}
+.gw-cell.is-wall { background: var(--global-text-color); opacity: 0.82; }
+.gw-cell.is-trail::after {
+  content: "";
+  position: absolute;
+  inset: 32%;
+  border-radius: 50%;
+  background: var(--global-base-color);
+  opacity: 0.28;
+}
+.gw-cell.is-goal { box-shadow: inset 0 0 0 2px var(--global-base-color); }
+.gw-cell.is-agent::after {
+  content: "";
+  position: absolute;
+  inset: 18%;
+  border-radius: 3px;
+  background: var(--global-base-color);
+  box-shadow: 0 0 8px rgba(212, 69, 47, 0.6);
+}
+
+kbd {
+  font-family: $header-font-family;
+  font-size: 0.85em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 3px;
+  padding: 0.05em 0.4em;
+  color: var(--global-base-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .home-hero__title .rotate::after { animation: none; }
+  .cmdk-panel { animation: none; }
+}
