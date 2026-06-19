@@ -1,0 +1,143 @@
+/* ==========================================================================
+   CUSTOM REFRESH
+   A modern typographic restyle layered on top of the theme.
+   Imported last in main.scss so these rules win. Colors use the runtime
+   CSS custom properties (--global-*) so they stay correct in light/dark.
+   ========================================================================== */
+
+/* ---- Reading rhythm ---------------------------------------------------- */
+.page__content {
+  font-size: 1.05em;
+  line-height: 1.75;
+  /* a comfortable, intentional measure instead of a very wide column */
+  max-width: 52rem;
+}
+
+.page__content p,
+.page__content li {
+  font-size: 1.02em;
+}
+
+/* Lead paragraph — gives the home page a light "hero" feel */
+.page__content > p:first-of-type {
+  font-size: 1.28em;
+  line-height: 1.55;
+  font-weight: 400;
+  margin-bottom: 1.4em;
+}
+
+/* ---- Headings: tight, bold, modern grotesk ----------------------------- */
+.page__title,
+.archive__item-title,
+.page__content h1,
+.page__content h2,
+.page__content h3,
+.page__content h4 {
+  font-family: $header-font-family;
+  letter-spacing: -0.022em;
+  font-weight: 700;
+}
+
+.page__title {
+  font-size: 2.7em;
+  line-height: 1.05;
+  margin-bottom: 0.6em;
+}
+
+/* Section headings: drop the dated full-width underline, use a short
+   accent rule instead. Applies to both h1 (=== in markdown) and h2. */
+.page__content h1,
+.page__content h2 {
+  border-bottom: 0 !important;
+  padding-bottom: 0;
+  margin-top: 2.2em;
+  margin-bottom: 0.7em;
+  font-size: 1.7em;
+}
+
+.page__content h1::after,
+.page__content h2::after {
+  content: "";
+  display: block;
+  width: 2.4rem;
+  height: 3px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background: var(--global-base-color);
+}
+
+.page__content h3 {
+  font-size: 1.28em;
+  margin-top: 1.8em;
+}
+
+/* ---- Links: clean, animated underline (no heavy default underline) ----- */
+.page__content a {
+  color: var(--global-link-color);
+  text-decoration: none;
+  background-image: linear-gradient(var(--global-link-color), var(--global-link-color));
+  background-size: 0% 1.5px;
+  background-position: 0 calc(100% - 1px);
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease;
+}
+
+.page__content a:hover {
+  text-decoration: none;
+  background-size: 100% 1.5px;
+}
+
+/* ---- Top navigation / masthead ----------------------------------------- */
+.masthead__inner-wrap {
+  padding-top: 0.95em;
+  padding-bottom: 0.95em;
+}
+
+.greedy-nav a,
+.masthead .site-title {
+  font-family: $header-font-family;
+}
+
+.greedy-nav a {
+  font-size: 0.95em;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+.masthead .site-title {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* ---- Author sidebar ---------------------------------------------------- */
+.author__avatar img {
+  border-radius: 50%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  max-width: 150px;
+  border: 3px solid var(--global-base-color);
+  padding: 3px;
+  background: var(--global-bg-color);
+}
+
+.author__name {
+  font-family: $header-font-family;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.author__bio {
+  line-height: 1.5;
+}
+
+/* ---- Buttons (e.g. CV download) ---------------------------------------- */
+.btn {
+  border-radius: 999px;
+  font-family: $header-font-family;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.55em 1.4em;
+}
+
+/* ---- Misc polish ------------------------------------------------------- */
+a { transition: color 0.15s ease-in-out; }
