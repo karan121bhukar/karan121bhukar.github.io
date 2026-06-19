@@ -24,14 +24,37 @@ You can reach me at **[choudhary121karan@gmail.com](mailto:choudhary121karan@gma
 News
 ======
 <style>
-  ul.news-list { list-style: none; padding-left: 0; }
-  ul.news-list li { padding: 0.35em 0; border-bottom: 1px solid #eee; }
+  .news-scroll {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    padding: 0 1em;
+    margin-top: 0.5em;
+    /* subtle hint that there's more to scroll */
+    -webkit-overflow-scrolling: touch;
+  }
+  .news-scroll::-webkit-scrollbar { width: 8px; }
+  .news-scroll::-webkit-scrollbar-thumb { background: #c7c7c7; border-radius: 4px; }
+  ul.news-list { list-style: none; padding-left: 0; margin: 0; }
+  ul.news-list li { padding: 0.5em 0; border-bottom: 1px solid #eee; }
   ul.news-list li:last-child { border-bottom: none; }
-  ul.news-list strong:first-child { display: inline-block; min-width: 6.5em; color: #2e2e2e; }
+  ul.news-list strong:first-child { display: inline-block; min-width: 6.5em; color: #2e2e2e; vertical-align: top; }
 </style>
+<div class="news-scroll">
 <ul class="news-list">
-  <li><strong>Fall 2026</strong> — Starting the <strong>MSCS</strong> program at <strong>NYU Courant</strong>.</li>
-  <li><strong>Nov 2025</strong> — Paper <em>“Scalable and Efficient Large-Scale Log Analysis with LLMs”</em> accepted at <strong>AAAI 2026</strong>.</li>
-  <li><strong>2025</strong> — Patents <strong>US12536061B1</strong> and <strong>US12277025B2</strong> granted; <em>LogAn</em> presented at <strong>ICPE 2025</strong>.</li>
-  <li><strong>Feb 2023</strong> — <em>“End-to-End Deep Reinforcement Learning for Conversation Disentanglement”</em> presented at <strong>AAAI 2023</strong>.</li>
+  <li><strong>Fall 2026</strong> — Starting the <strong>MSCS</strong> program at <strong>NYU Courant</strong>; moving toward embodied AI.</li>
+  <li><strong>Nov 2025</strong> — Paper on scalable LLM-based log analysis accepted at <strong>AAAI 2026</strong>.</li>
+  <li><strong>Sep 2025</strong> — Patent <strong>US12536061B1</strong> granted (explainability-driven alert suppression).</li>
+  <li><strong>Apr 2025</strong> — Patent <strong>US12277025B2</strong> granted (dynamic alert-noise reduction).</li>
+  <li><strong>Mar 2025</strong> — <em>LogAn</em> (LLM log analytics with causal inference) presented at <strong>ICPE 2025</strong>.</li>
+  <li><strong>Oct 2024</strong> — Joined <strong>Amazon</strong> as an Applied Scientist on multilingual search query understanding.</li>
+  <li><strong>2024</strong> — IBM Research <strong>Outstanding Technical Achievement Award</strong> and <strong>Inventor Award</strong>.</li>
+  <li><strong>Apr 2024</strong> — Paper on dynamic alert suppression presented at <strong>ICSE 2024</strong>, Lisbon.</li>
+  <li><strong>Jan 2024</strong> — <em>Dynamic-X-Y</em> tool paper presented at <strong>COMSNETS 2024</strong>.</li>
+  <li><strong>Jul 2023</strong> — Paper on log representations for AIOps presented at <strong>IEEE CLOUD 2023</strong>.</li>
+  <li><strong>Feb 2023</strong> — Deep-RL paper on conversation disentanglement presented at <strong>AAAI 2023</strong>, Washington D.C.</li>
+  <li><strong>2023–25</strong> — Multiple U.S. / China / Japan patent applications filed on AIOps and log analytics.</li>
+  <li><strong>Jun 2022</strong> — Joined <strong>IBM Research</strong> as a Research Engineer after graduating from <strong>IIT Hyderabad</strong>.</li>
 </ul>
+</div>
