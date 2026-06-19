@@ -10,7 +10,6 @@ redirect_from:
   <div class="home-hero">
     <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
     <h1 class="home-hero__title"><span class="hero-l1">From ML at scale</span><span class="hero-rotline">to <span class="rotate" data-words="embodied AI|robot learning|reinforcement learning|test-time scaling">embodied AI</span>.</span></h1>
-    <p class="home-hero__sub">Reinforcement learning, robot learning, and test-time scaling — building models that don't just predict, but act.</p>
   </div>
 
   <div class="home-robot" aria-hidden="true">
