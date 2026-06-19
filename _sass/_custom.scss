@@ -191,6 +191,10 @@
 .robot .r-object { fill: var(--global-base-color); }
 
 /* ---- Responsive --------------------------------------------------------- */
+@media (min-width: 1101px) {
+  /* sit the headline around the arm's working midpoint (purely visual) */
+  .page__content .home-hero { transform: translateY(28px); }
+}
 @media (max-width: 1100px) {
   .page__content .home-top { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
   .home-robot { width: 190px; align-self: center; }
