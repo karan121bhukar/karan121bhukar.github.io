@@ -26,33 +26,39 @@
     initGridworld();
   });
 
-  /* ---- 1. Scroll reveal ------------------------------------------------- */
+  /* ---- 1. Scroll reveal (re-triggers on re-entry) ---------------------- */
   function initScrollReveal() {
     if (reduceMotion || !("IntersectionObserver" in window)) return;
-    var content = document.querySelector(".page__content");
-    if (!content) return;
 
     var targets = [];
-    var title = document.querySelector(".page__title");
-    if (title) targets.push(title);
-    Array.prototype.forEach.call(content.children, function (el) {
+    function add(el) {
+      if (!el) return;
       var tag = el.tagName.toLowerCase();
       if (tag === "style" || tag === "script") return;
+      if (el.classList.contains("reveal")) return;
+      el.classList.add("reveal");
       targets.push(el);
-    });
+    }
+
+    // Single-layout pages keep the title outside .page__content.
+    add(document.querySelector(".page__title"));
+    // Covers single pages (.page__content) and listing pages (.archive).
+    var nodes = document.querySelectorAll(".page__content > *, .archive > *");
+    Array.prototype.forEach.call(nodes, add);
+    if (!targets.length) return;
 
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add("is-visible");
-          io.unobserve(e.target);
-        }
+        e.target.classList.toggle("is-visible", e.isIntersecting);
       });
-    }, { threshold: 0.08, rootMargin: "0px 0px -36px 0px" });
+    }, { threshold: 0.06, rootMargin: "0px 0px -30px 0px" });
 
+    var vh = window.innerHeight || document.documentElement.clientHeight;
     targets.forEach(function (el, i) {
-      el.classList.add("reveal");
-      el.style.transitionDelay = Math.min(i * 45, 260) + "ms";
+      el.style.transitionDelay = Math.min(i * 40, 220) + "ms";
+      // Reveal anything already on screen immediately (no load flash).
+      var r = el.getBoundingClientRect();
+      if (r.top < vh && r.bottom > 0) el.classList.add("is-visible");
       io.observe(el);
     });
   }
