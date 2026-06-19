@@ -165,6 +165,9 @@
   margin: 0 0 0.45em;
 }
 .page__content .home-hero__title::after { display: none; }
+.home-hero__title .hero-l1 { display: block; }
+/* reserve two lines so the cycling phrase never shifts the page */
+.home-hero__title .hero-rotline { display: block; min-height: 2.2em; }
 
 .page__content .home-hero__sub {
   font-size: 1.28em;
@@ -194,18 +197,8 @@
 .robot .r-floor { opacity: 0.3; stroke-width: 2; }
 .robot .r-base { fill: var(--global-text-color); opacity: 0.88; stroke: none; }
 .robot .r-joint { fill: var(--global-base-color); stroke: none; }
-.robot .r-target {
-  fill: var(--global-base-color);
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: r-pulse 3s ease-in-out infinite;
-}
-.robot .r-target--2 { animation-delay: 1.5s; }
-
-@keyframes r-pulse {
-  0%, 100% { opacity: 0.3; transform: scale(0.7); }
-  50%      { opacity: 1;   transform: scale(1.2); }
-}
+.robot .r-station { fill: none; stroke: var(--global-base-color); stroke-width: 1.6; opacity: 0.45; }
+.robot .r-object { fill: var(--global-base-color); }
 
 /* ---- Responsive --------------------------------------------------------- */
 @media (max-width: 800px) {
@@ -218,7 +211,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .robot .r-target { animation: none; }
   .robot animateTransform { display: none; }   /* not standard, but harmless */
 }
 

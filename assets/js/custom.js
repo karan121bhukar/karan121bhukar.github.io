@@ -180,7 +180,7 @@
     render();
   }
 
-  /* ---- 4. Cursor-tracking robotic arm (2-link IK) ---------------------- */
+  /* ---- 4. Autonomous pick-and-place robotic arm (2-link IK) ------------ */
   function initRobotArm() {
     var svg = document.querySelector(".home-robot .robot");
     if (!svg) return;
@@ -188,6 +188,7 @@
     var fore = svg.querySelector(".r-fore");
     var gtop = svg.querySelector(".r-grip-top");
     var gbot = svg.querySelector(".r-grip-bot");
+    var object = svg.querySelector(".r-object");
     if (!upper || !fore) return;
 
     // Remove the SMIL fallback animation so JS takes full control.
@@ -195,57 +196,63 @@
       n.parentNode.removeChild(n);
     });
 
-    var S = { x: 130, y: 208 }, L1 = 92, L2 = 76, VBW = 260, VBH = 250;
+    var S = { x: 130, y: 208 }, L1 = 92, L2 = 76;
     var DEG = 180 / Math.PI;
-    var pointer = { x: S.x + 60, y: S.y - 120, t: -9999 };
+    var A = { x: 216, y: 106 }, B = { x: 60, y: 124 };
     var cur = { t1: -6, t2: 18, g: 1 };
-
-    if (reduceMotion) {
-      upper.setAttribute("transform", "rotate(-6)");
-      fore.setAttribute("transform", "rotate(18)");
-      return;
-    }
-
-    window.addEventListener("pointermove", function (e) {
-      var r = svg.getBoundingClientRect();
-      pointer.x = (e.clientX - r.left) / r.width * VBW;
-      pointer.y = (e.clientY - r.top) / r.height * VBH;
-      pointer.t = performance.now();
-    }, { passive: true });
 
     function clamp(v, a, b) { return v < a ? a : (v > b ? b : v); }
     function lerp(a, b, f) { return a + (b - a) * f; }
+    function easeInOut(e) { return e < 0.5 ? 2 * e * e : 1 - Math.pow(-2 * e + 2, 2) / 2; }
 
-    function frame(now) {
-      var time = now / 1000;
-      var idle = (now - pointer.t) > 2200;
-      var T = idle
-        ? { x: 130 + 86 * Math.sin(time * 0.5), y: 100 + 26 * Math.sin(time * 0.83 + 1) }
-        : { x: pointer.x, y: pointer.y };
-
+    function applyIK(T, g) {
       var dx = T.x - S.x, dy = T.y - S.y;
       var d = clamp(Math.hypot(dx, dy), Math.abs(L1 - L2) + 8, L1 + L2 - 4);
       var phi = Math.atan2(dy, dx);
       var Tx = S.x + Math.cos(phi) * d, Ty = S.y + Math.sin(phi) * d;
-
       var cosA = clamp((L1 * L1 + d * d - L2 * L2) / (2 * L1 * d), -1, 1);
-      var A = Math.acos(cosA);
-      var psi1 = phi - A;
+      var ang = Math.acos(cosA);
+      var psi1 = phi - ang;
       var t1 = psi1 * DEG + 90;
       var Ex = S.x + L1 * Math.cos(psi1), Ey = S.y + L1 * Math.sin(psi1);
       var foreAng = Math.atan2(Ty - Ey, Tx - Ex) * DEG;
       var t2 = foreAng - t1;
-      var gripTarget = idle ? (0.5 + 0.5 * Math.sin(time * 1.7)) : 1;
-
-      cur.t1 = lerp(cur.t1, t1, 0.14);
-      cur.t2 = lerp(cur.t2, t2, 0.14);
-      cur.g = lerp(cur.g, gripTarget, 0.1);
-
+      cur.t1 = lerp(cur.t1, t1, 0.25);
+      cur.t2 = lerp(cur.t2, t2, 0.25);
+      cur.g = lerp(cur.g, g, 0.2);
       upper.setAttribute("transform", "rotate(" + cur.t1.toFixed(2) + ")");
       fore.setAttribute("transform", "rotate(" + cur.t2.toFixed(2) + ")");
       if (gtop) gtop.setAttribute("transform", "rotate(" + (-18 * cur.g).toFixed(2) + ")");
       if (gbot) gbot.setAttribute("transform", "rotate(" + (18 * cur.g).toFixed(2) + ")");
+    }
+    function setObject(p) {
+      if (!object) return;
+      object.setAttribute("cx", p.x.toFixed(1));
+      object.setAttribute("cy", p.y.toFixed(1));
+    }
 
+    if (reduceMotion) { applyIK(A, 0); setObject(A); return; }
+
+    // State machine: grab at src -> carry (arc) to dst -> release -> swap.
+    var src = A, dst = B, phase = "grab", tP = 0, last = performance.now();
+    var GRAB = 520, CARRY = 1650, RELEASE = 520;
+
+    function frame(now) {
+      var dt = now - last; last = now; tP += dt;
+      var T, g;
+      if (phase === "grab") {
+        T = src; g = 1 - clamp(tP / GRAB, 0, 1); setObject(src);
+        if (tP >= GRAB) { phase = "carry"; tP = 0; }
+      } else if (phase === "carry") {
+        var e = easeInOut(clamp(tP / CARRY, 0, 1));
+        T = { x: src.x + (dst.x - src.x) * e, y: src.y + (dst.y - src.y) * e - 38 * Math.sin(Math.PI * e) };
+        g = 0; setObject(T);
+        if (tP >= CARRY) { phase = "release"; tP = 0; }
+      } else {
+        T = dst; g = clamp(tP / RELEASE, 0, 1); setObject(dst);
+        if (tP >= RELEASE) { var tmp = src; src = dst; dst = tmp; phase = "grab"; tP = 0; }
+      }
+      applyIK(T, g);
       requestAnimationFrame(frame);
     }
     requestAnimationFrame(frame);

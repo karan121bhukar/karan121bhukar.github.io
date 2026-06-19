@@ -9,12 +9,12 @@ redirect_from:
 <div class="home-top">
   <div class="home-hero">
     <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
-    <h1 class="home-hero__title">From ML at scale<br>to <span class="rotate" data-words="embodied AI|robot learning|reinforcement learning|test-time scaling">embodied AI</span>.</h1>
+    <h1 class="home-hero__title"><span class="hero-l1">From ML at scale</span><span class="hero-rotline">to <span class="rotate" data-words="embodied AI|robot learning|reinforcement learning|test-time scaling">embodied AI</span>.</span></h1>
     <p class="home-hero__sub">Reinforcement learning, robot learning, and test-time scaling — building models that don't just predict, but act.</p>
   </div>
 
   <div class="home-robot" aria-hidden="true">
-    <svg class="robot" viewBox="0 0 260 250" role="img" aria-label="Animated line drawing of a robotic arm reaching between two targets">
+    <svg class="robot" viewBox="0 0 260 250" role="img" aria-label="Animated line drawing of a robotic arm performing a pick-and-place loop between two bins">
       <!-- reach envelope -->
       <path class="r-arc" d="M44 212 A122 122 0 0 1 234 98" />
       <!-- floor + base -->
@@ -52,9 +52,10 @@ redirect_from:
           </g>
         </g>
       </g>
-      <!-- targets the arm reaches toward -->
-      <circle class="r-target r-target--1" cx="216" cy="106" r="4" />
-      <circle class="r-target r-target--2" cx="60" cy="124" r="4" />
+      <!-- bins (stations) + the object being moved -->
+      <circle class="r-station" cx="216" cy="106" r="10" />
+      <circle class="r-station" cx="60" cy="124" r="10" />
+      <circle class="r-object" cx="216" cy="106" r="5.5" />
     </svg>
   </div>
 </div>
