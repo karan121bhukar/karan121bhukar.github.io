@@ -7,8 +7,8 @@ redirect_from:
 ---
 
 <div class="home-hero">
-  <p class="home-hero__eyebrow"><span class="prompt">~ $</span>incoming mscs · nyu courant · fall&nbsp;2026</p>
-  <h1 class="home-hero__title">From ML at scale<br>to embodied AI.<span class="home-hero__cursor" aria-hidden="true"></span></h1>
+  <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
+  <h1 class="home-hero__title">From ML at scale<br>to embodied AI.</h1>
   <p class="home-hero__sub">Reinforcement learning, robot learning, and test-time scaling — building models that don't just predict, but act.</p>
 </div>
 
@@ -39,9 +39,8 @@ News
   ul.news-list li:last-child { border-bottom: none; }
   .news-date {
     flex: 0 0 5em;
-    font-weight: 700;
-    font-family: "Space Mono", monospace;
-    color: var(--global-base-color);
+    font-weight: 600;
+    color: var(--global-text-color);
     white-space: nowrap;
   }
   .news-body { flex: 1 1 auto; min-width: 0; }

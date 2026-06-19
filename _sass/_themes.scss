@@ -39,9 +39,9 @@ $type-size-6                : 0.75em;   // ~12px
 $type-size-7                : 0.6875em; // ~11px
 $type-size-8                : 0.625em;  // ~10px
 
-$global-font-family         : "Space Grotesk", "Segoe UI", sans-serif;
-$header-font-family         : "Space Mono", ui-monospace, "SFMono-Regular", monospace;
-$caption-font-family        : "Space Mono", monospace;
+$global-font-family         : $sans-serif;
+$header-font-family         : "Space Grotesk", -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$caption-font-family        : $serif;
 
 /* ==========================================================================
    Breakpoints
