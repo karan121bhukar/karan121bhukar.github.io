@@ -1,24 +1,20 @@
 /* ==========================================================================
-   CUSTOM REFRESH
-   A modern typographic restyle layered on top of the theme.
-   Imported last in main.scss so these rules win. Colors use the runtime
-   CSS custom properties (--global-*) so they stay correct in light/dark.
+   CUSTOM THEME — "EDITORIAL PAPER"
+   Warm paper (#faf8f4) + ink (#1a1a1a) + a single warm-red accent (#d4452f).
+   Fraunces (display headings) + Newsreader (body). Loaded last in main.scss.
+   Colors reference the --global-* custom properties.
    ========================================================================== */
 
 /* ---- Reading rhythm ---------------------------------------------------- */
 .page__content {
-  font-size: 1.05em;
-  line-height: 1.75;
-  /* a comfortable, intentional measure instead of a very wide column */
+  font-size: 1.08em;
+  line-height: 1.7;
   max-width: 52rem;
 }
-
 .page__content p,
-.page__content li {
-  font-size: 1.02em;
-}
+.page__content li { font-size: 1.02em; }
 
-/* ---- Headings: tight, bold, modern grotesk ----------------------------- */
+/* ---- Headings: Fraunces display, with a short red accent rule ---------- */
 .page__title,
 .archive__item-title,
 .page__content h1,
@@ -26,18 +22,28 @@
 .page__content h3,
 .page__content h4 {
   font-family: $header-font-family;
-  letter-spacing: -0.022em;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .page__title {
+  position: relative;
   font-size: 2.7em;
+  font-weight: 700;
   line-height: 1.05;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.55em;
+  padding-bottom: 0.2em;
+}
+.page__title::after {
+  content: "";
+  display: block;
+  width: 2.6rem;
+  height: 3px;
+  margin-top: 0.45rem;
+  border-radius: 2px;
+  background: var(--global-base-color);
 }
 
-/* Section headings: drop the dated full-width underline, use a short
-   accent rule instead. Applies to both h1 (=== in markdown) and h2. */
 .page__content h1,
 .page__content h2 {
   border-bottom: 0 !important;
@@ -45,8 +51,8 @@
   margin-top: 2.2em;
   margin-bottom: 0.7em;
   font-size: 1.7em;
+  font-weight: 700;
 }
-
 .page__content h1::after,
 .page__content h2::after {
   content: "";
@@ -58,120 +64,160 @@
   background: var(--global-base-color);
 }
 
-.page__content h3 {
-  font-size: 1.28em;
-  margin-top: 1.8em;
-}
+.page__content h3 { font-size: 1.3em; margin-top: 1.8em; }
 
-/* ---- Links: clean, animated underline (no heavy default underline) ----- */
+/* ---- Links: editorial underlines --------------------------------------- */
 .page__content a {
   color: var(--global-link-color);
-  text-decoration: none;
-  background-image: linear-gradient(var(--global-link-color), var(--global-link-color));
-  background-size: 0% 1.5px;
-  background-position: 0 calc(100% - 1px);
-  background-repeat: no-repeat;
-  transition: background-size 0.25s ease;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(194, 58, 38, 0.4);
+  transition: text-decoration-color 0.2s ease, color 0.2s ease;
 }
-
 .page__content a:hover {
-  text-decoration: none;
-  background-size: 100% 1.5px;
+  color: var(--global-link-color-hover);
+  text-decoration-color: var(--global-link-color);
 }
 
-/* ---- Top navigation / masthead ----------------------------------------- */
+/* ---- Masthead: editorial wordmark + small-caps nav + red rule ---------- */
+.masthead {
+  border-top: 3px solid var(--global-base-color);
+}
 .masthead__inner-wrap {
-  padding-top: 0.95em;
-  padding-bottom: 0.95em;
+  padding-top: 0.9em;
+  padding-bottom: 0.9em;
 }
 
-.greedy-nav a,
 .masthead .site-title {
   font-family: $header-font-family;
+  font-weight: 700;
+  font-size: 1.3em;
+  letter-spacing: -0.015em;
 }
 
 .greedy-nav a {
-  font-size: 0.95em;
-  font-weight: 500;
-  letter-spacing: 0.005em;
-}
-
-.masthead .site-title {
-  font-weight: 700;
-  letter-spacing: -0.015em;
+  font-family: $header-font-family;
+  font-size: 0.8em;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  transition: color 0.2s ease;
 }
 
 /* ---- Author sidebar ---------------------------------------------------- */
 .author__avatar img {
-  border-radius: 50%;
+  border-radius: 3px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
   max-width: 150px;
-  border: 3px solid var(--global-base-color);
-  padding: 3px;
-  background: var(--global-bg-color);
+  border: 1px solid var(--global-text-color);
 }
-
 .author__name {
   font-family: $header-font-family;
   font-weight: 700;
   letter-spacing: -0.01em;
 }
+.author__bio { line-height: 1.5; }
 
-.author__bio {
-  line-height: 1.5;
-}
-
-/* ---- Buttons (e.g. CV download) ---------------------------------------- */
+/* ---- Buttons (e.g. CV download): squared editorial --------------------- */
 .btn {
-  border-radius: 999px;
+  border-radius: 2px;
   font-family: $header-font-family;
   font-weight: 600;
-  letter-spacing: 0.01em;
-  padding: 0.55em 1.4em;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85em;
+  padding: 0.6em 1.3em;
 }
 
-/* ---- Misc polish ------------------------------------------------------- */
-a { transition: color 0.15s ease-in-out; }
+/* ==========================================================================
+   HOME PAGE — hero + animated robotic arm
+   ========================================================================== */
+.page__content .home-top {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 0.25em 0 2.8em;
+}
 
-/* ---- Home page hero ---------------------------------------------------- */
 .page__content .home-hero {
-  margin: 0.25em 0 2.6em;
+  flex: 1 1 auto;
+  margin: 0;
 }
 
 .page__content .home-hero__eyebrow {
   font-family: $header-font-family;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.78em;
+  letter-spacing: 0.16em;
+  font-size: 0.72em;
   font-weight: 600;
   color: var(--global-base-color);
-  margin: 0 0 0.7em;
+  margin: 0 0 0.9em;
 }
 
 .page__content .home-hero__title {
   font-family: $header-font-family;
-  font-weight: 700;
-  letter-spacing: -0.035em;
-  font-size: 3.1em;
-  line-height: 1.02;
-  margin: 0 0 0.4em;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: 3em;
+  line-height: 1.04;
+  margin: 0 0 0.45em;
 }
-
-/* neutralise the generic section-heading accent rule for the hero title */
 .page__content .home-hero__title::after { display: none; }
 
 .page__content .home-hero__sub {
-  font-size: 1.3em;
+  font-size: 1.28em;
   line-height: 1.5;
-  font-weight: 400;
+  font-style: italic;
   color: var(--global-text-color);
-  opacity: 0.85;
+  opacity: 0.82;
   margin: 0;
-  max-width: 36ch;
+  max-width: 38ch;
 }
 
+/* ---- The robot ---------------------------------------------------------- */
+.home-robot {
+  flex: 0 0 auto;
+  width: clamp(170px, 22vw, 250px);
+  align-self: center;
+}
+.home-robot svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: block;
+}
+.robot line,
+.robot path { fill: none; stroke: var(--global-text-color); stroke-width: 3.4; stroke-linecap: round; stroke-linejoin: round; }
+.robot .r-arc { opacity: 0.16; stroke-width: 1.4; stroke-dasharray: 4 7; }
+.robot .r-floor { opacity: 0.3; stroke-width: 2; }
+.robot .r-base { fill: var(--global-text-color); opacity: 0.88; stroke: none; }
+.robot .r-joint { fill: var(--global-base-color); stroke: none; }
+.robot .r-target {
+  fill: var(--global-base-color);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: r-pulse 3s ease-in-out infinite;
+}
+.robot .r-target--2 { animation-delay: 1.5s; }
+
+@keyframes r-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(0.7); }
+  50%      { opacity: 1;   transform: scale(1.2); }
+}
+
+/* ---- Responsive --------------------------------------------------------- */
+@media (max-width: 800px) {
+  .page__content .home-top { flex-direction: column; align-items: flex-start; gap: 1.6rem; }
+  .home-robot { width: 190px; align-self: center; }
+}
 @media (max-width: 600px) {
-  .page__content .home-hero__title { font-size: 2.3em; }
+  .page__content .home-hero__title { font-size: 2.2em; }
   .page__content .home-hero__sub { font-size: 1.12em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot .r-target { animation: none; }
+  .robot animateTransform { display: none; }   /* not standard, but harmless */
 }

@@ -6,10 +6,57 @@ redirect_from:
   - /about.html
 ---
 
-<div class="home-hero">
-  <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
-  <h1 class="home-hero__title">From ML at scale<br>to embodied AI.</h1>
-  <p class="home-hero__sub">Reinforcement learning, robot learning, and test-time scaling — building models that don't just predict, but act.</p>
+<div class="home-top">
+  <div class="home-hero">
+    <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
+    <h1 class="home-hero__title">From ML at scale<br>to embodied AI.</h1>
+    <p class="home-hero__sub">Reinforcement learning, robot learning, and test-time scaling — building models that don't just predict, but act.</p>
+  </div>
+
+  <div class="home-robot" aria-hidden="true">
+    <svg class="robot" viewBox="0 0 260 250" role="img" aria-label="Animated line drawing of a robotic arm reaching between two targets">
+      <!-- reach envelope -->
+      <path class="r-arc" d="M44 212 A122 122 0 0 1 234 98" />
+      <!-- floor + base -->
+      <line class="r-floor" x1="38" y1="226" x2="226" y2="226" />
+      <path class="r-base" d="M104 226 L156 226 L148 208 L112 208 Z" />
+      <!-- shoulder pivot -->
+      <g transform="translate(130 208)">
+        <g class="r-upper">
+          <animateTransform attributeName="transform" type="rotate" dur="7s" repeatCount="indefinite"
+            calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" values="-12;18;-12" />
+          <line x1="0" y1="0" x2="0" y2="-92" />
+          <circle class="r-joint" cx="0" cy="0" r="7.5" />
+          <!-- elbow pivot -->
+          <g transform="translate(0 -92)">
+            <g class="r-fore">
+              <animateTransform attributeName="transform" type="rotate" dur="7s" repeatCount="indefinite" begin="-2.3s"
+                calcMode="spline" keyTimes="0;0.5;1" keySplines="0.45 0 0.55 1;0.45 0 0.55 1" values="22;-30;22" />
+              <line x1="0" y1="0" x2="76" y2="0" />
+              <circle class="r-joint" cx="0" cy="0" r="6.5" />
+              <!-- wrist + gripper -->
+              <g transform="translate(76 0)">
+                <g class="r-grip-top">
+                  <animateTransform attributeName="transform" type="rotate" dur="7s" repeatCount="indefinite"
+                    calcMode="spline" keyTimes="0;0.35;0.6;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" values="0;0;-18;0" />
+                  <line x1="0" y1="0" x2="18" y2="-10" />
+                </g>
+                <g class="r-grip-bot">
+                  <animateTransform attributeName="transform" type="rotate" dur="7s" repeatCount="indefinite"
+                    calcMode="spline" keyTimes="0;0.35;0.6;1" keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1" values="0;0;18;0" />
+                  <line x1="0" y1="0" x2="18" y2="10" />
+                </g>
+                <circle class="r-joint r-joint--end" cx="0" cy="0" r="5.5" />
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <!-- targets the arm reaches toward -->
+      <circle class="r-target r-target--1" cx="216" cy="106" r="4" />
+      <circle class="r-target r-target--2" cx="60" cy="124" r="4" />
+    </svg>
+  </div>
 </div>
 
 I'm an incoming **MSCS student at [NYU Courant](https://cs.nyu.edu/)** (Fall 2026). I come from several years of building machine learning systems at scale, and I'm now focused on **embodied AI** — bringing modern ML/DL to agents that have to act in the physical world.
@@ -40,7 +87,7 @@ News
   .news-date {
     flex: 0 0 5em;
     font-weight: 600;
-    color: var(--global-text-color);
+    color: var(--global-base-color);
     white-space: nowrap;
   }
   .news-body { flex: 1 1 auto; min-width: 0; }
