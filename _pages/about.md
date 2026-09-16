@@ -8,7 +8,7 @@ redirect_from:
 
 <div class="home-top">
   <div class="home-hero">
-    <p class="home-hero__eyebrow">Incoming MSCS · NYU Courant · Fall 2026</p>
+    <p class="home-hero__eyebrow"> MSCS · NYU Courant · Fall 2026</p>
     <h1 class="home-hero__title"><span class="hero-l1">From ML at scale</span><span class="hero-rotline">to <span class="rotate" data-words="embodied AI|robot learning|reinforcement learning|test-time scaling">embodied AI</span>.</span></h1>
   </div>
 
@@ -59,7 +59,7 @@ redirect_from:
   </div>
 </div>
 
-I'm an incoming **MSCS student at [NYU Courant](https://cs.nyu.edu/)** (Fall 2026). I come from several years of building machine learning systems at scale, and I'm now focused on **embodied AI** — bringing modern ML/DL to agents that have to act in the physical world.
+I'm an  **MSCS student at [NYU Courant](https://cs.nyu.edu/)** (Fall 2026). I come from several years of building machine learning systems at scale, and I'm now focused on **embodied AI** — bringing modern ML/DL to agents that have to act in the physical world.
 
 **What I'm working toward.** I want to study how the methods that made large-scale ML work — reinforcement learning, large pretrained models, and learning from messy real-world data — transfer to robots. I'm especially interested in:
 
